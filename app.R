@@ -19,6 +19,7 @@ ui <- shinyUI(fluidPage(
    
    # Application title
    titlePanel("LoL - Stats"),
+   tags$img(height=100, width = 200, src="http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/Aatrox.png "),
    
    # Sidebar with a slider input for number of bins 
    sidebarLayout(
@@ -73,6 +74,11 @@ server <- shinyServer(function(input, output){
     
     data.stats <-as.data.frame(table.stats[,-c(8, 10:14, 17,21,23:35)])
     names(data.stats)<-names.stats()
+    id.champion<-champions.liste()[[2]]
+    nom.champion<-champions.liste()[[1]]
+    table.champion<-cbind(id.champion,nom.champion)
+    nom.champion.play<-match(data.stats[,1],table.champion[,1])
+    data.stats[,1]<-table.champion[,2][nom.champion.play]
     data.stats
   })
   
@@ -81,7 +87,6 @@ server <- shinyServer(function(input, output){
   }))
   
 })
-
 # Run the application 
 shinyApp(ui = ui, server = server)
 
