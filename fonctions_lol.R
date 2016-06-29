@@ -121,10 +121,10 @@ lol.staticdata.version<- function(server, key){
 # La fonction renvoie l'adresse de l'image d'un champion
 # Les parametres sont : 
 # champion : le nom du champion (chaine de charactere)
-# 
+# type : le type d'image (splashart, loading, square)
+# number : peut être vide, indique le numeros du skin (seulement pour splashart et loading)
 # version : la version de staticdata (utiliser la fonction lol.staticdata.version)
 
-
-lol.staticdata.square<- function(){
-  
-}
+#lol.staticdata.image<- function(champion, type, number, version){
+#  if(type == "splashart"){resultat <- paste("http://ddragon.leagueoflegends.com/cdn/img/champion/splash/",champion,"_"0.jpg)}
+#}
